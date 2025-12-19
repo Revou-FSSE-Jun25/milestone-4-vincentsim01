@@ -3,6 +3,8 @@
 
 📌 Revobank – NestJS API
 
+Deployment: milestone-4-vincentsim01.railway.internal
+
 A backend banking REST API built with NestJS, Prisma ORM, PostgreSQL, and deployed using Railway and Docker.
 Provides CRUD operations for Client, Account, and Transaction resources, with authentication and role-based authorization using JWT Auth Guard + Role Guard.
 
