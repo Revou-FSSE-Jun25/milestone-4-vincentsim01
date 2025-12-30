@@ -1,0 +1,52 @@
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { TransactionRepository } from './transaction.repository';
+import { PrismaService } from '../prisma/prisma.service';
+import { CreateTransactionDto } from './dto/create-transaction-revobank.dto';
+
+@Injectable()
+export class TransactionService {
+    constructor(private readonly transactionRepo: TransactionRepository, private readonly prisma: PrismaService){}
+
+    getAllTransactions(){
+        return this.transactionRepo.findAllTransaction();
+    }
+
+
+    getOneTransactions(id: number){
+        return this.transactionRepo.findOneTransaction(id);
+    }
+
+    createDepositTransactions( data:{
+            // id:number,
+            type: string,
+            amount: number,
+            description: string,
+            userId: number
+
+        }){
+        return this.transactionRepo.createTransactionDeposit(data);
+    }
+
+
+    createWithdrawTransactions( data:{
+            // id:number,
+            type: string,
+            amount: number,
+            description: string,
+            userId: number
+
+        }){
+        return this.transactionRepo.createTransactionWithdraw(data);
+    }
+
+    createTransferTransactions( data:{
+            // id:number,
+            type: string,
+            amount: number,
+            description: string,
+            userId: number
+
+        }){
+        return this.transactionRepo.createTransactionTransfer(data);
+    }
+}

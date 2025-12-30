@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+
+}
+
+
+
+enum Role {
+  ADMIN
+  USER
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  email        String        @unique
+  password     String
+  name         String
+  balance      Float         @default(0)
+  role         Role?
+  refreshToken String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  transaction  Transaction[]
+  account       Account[]
+}
+
+
+model Account {
+  accountid           Int           @id @default(autoincrement())
+  age          Int
+  type         String
+  phone        Int
+  address      String
+  nationality  String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  userId        Int // foreign key
+  user          User     @relation(fields: [userId], references: [id])
+}
+
+model Transaction {
+  transactionid Int      @id @default(autoincrement())
+  type          String
+  amount        Float    @default(0)
+  description   String
+  userId        Int // foreign key
+  user          User     @relation(fields: [userId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
