@@ -1,19 +1,20 @@
 import { IsBoolean, IsString, IsOptional, IsEmail, IsNotEmpty, IsNumber, MinLength, Matches } from 'class-validator';
 
-export class CreateTransactionDto {
+export class UpdateTransactionDto {
 @IsString()
-@IsNotEmpty()
+@IsOptional()
 type: 'deposit' | 'withdraw' | 'transfer';
 
 
 @IsNumber()
-@IsNotEmpty()
+@IsOptional()
 amount: number;
 
 @IsString()
+@IsOptional()
 description?: string;
 
 @IsNumber()
-@IsNotEmpty()
+@IsOptional()
 clientId: number;
 }

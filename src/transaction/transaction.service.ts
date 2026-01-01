@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { TransactionRepository } from './transaction.repository';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateTransactionDto } from './dto/create-transaction-revobank.dto';
+import { UpdateTransactionDto } from './dto/update-transaction.dto';
 
 @Injectable()
 export class TransactionService {
@@ -18,6 +19,10 @@ export class TransactionService {
 
     getOneTransactions(id: number){
         return this.transactionRepo.findOneTransaction(id);
+    }
+
+    UpdateTransaction(id: number, data: UpdateTransactionDto) {
+        return this.transactionRepo.update(id, data);
     }
 
     createDepositTransactions( data:{

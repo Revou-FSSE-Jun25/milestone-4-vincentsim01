@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import {UpdateTransactionDto} from './dto/update-transaction.dto';
 
 
 @Injectable()
@@ -25,6 +26,13 @@ export class TransactionRepository {
       where: { transactionid: transactionid },
     });
   }
+
+    update(transactionId: number, transaction: UpdateTransactionDto) {
+      return this.prisma.transaction.update({
+        where: { transactionid: transactionId },
+        data: transaction,
+      });
+    }
 
 
        async createTransactionDeposit(data: { type: string; amount: number; description: string; clientId: number; }) {

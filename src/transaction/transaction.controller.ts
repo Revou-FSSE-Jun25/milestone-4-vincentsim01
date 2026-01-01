@@ -6,6 +6,7 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { OwnershipGuard } from 'src/auth/guards/ownership.guard';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { Role } from 'src/auth/decorators/roles.decorator';
+import { UpdateTransactionDto } from './dto/update-transaction.dto';
 
 @Controller('transaction')
 @UseGuards(JwtAuthGuard)
@@ -25,6 +26,14 @@ export class TransactionController {
     @Delete(':id')
     DeleteOneTransactions(@Param('id') id:string){
         return this.TransactionServiceService.DeleteOneTransactions(Number(id));
+    }
+
+    @Patch(':id')
+    UpdateTransaction(
+        @Param('id') id:string,
+        @Body() body: UpdateTransactionDto
+    ){
+        return this.TransactionServiceService.UpdateTransaction(Number(id), body);
     }
 
     @Post('deposit')
