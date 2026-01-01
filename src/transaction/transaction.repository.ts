@@ -20,6 +20,12 @@ export class TransactionRepository {
         });
   }
 
+  async deleteTransaction(transactionid: number) {
+    return this.prisma.transaction.delete({
+      where: { transactionid: transactionid },
+    });
+  }
+
 
        async createTransactionDeposit(data: { type: string; amount: number; description: string; userId: number; }) {
      

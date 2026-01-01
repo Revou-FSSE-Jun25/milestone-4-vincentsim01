@@ -22,6 +22,11 @@ export class TransactionController {
         return this.TransactionServiceService.getOneTransactions(Number(id));
     }
 
+    @Delete(':id')
+    DeleteOneTransactions(@Param('id') id:string){
+        return this.TransactionServiceService.DeleteOneTransactions(Number(id));
+    }
+
     @Post('deposit')
     createDepositTransactions(
         @Body() body:{

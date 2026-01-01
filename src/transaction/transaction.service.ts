@@ -11,6 +11,10 @@ export class TransactionService {
         return this.transactionRepo.findAllTransaction();
     }
 
+    DeleteOneTransactions(id:number){
+        return this.transactionRepo.deleteTransaction(id);
+    }
+
 
     getOneTransactions(id: number){
         return this.transactionRepo.findOneTransaction(id);
