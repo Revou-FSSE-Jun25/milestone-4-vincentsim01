@@ -15,20 +15,11 @@ type?:string;
 
 @IsNumber()
 @IsOptional()
-age?:number;
-
-@IsOptional()
-@IsString()
-nationality?: string;
+interest?:number;
 
 
 @IsOptional()
 @IsNumber()
-phone?: number;
-
-
-@IsOptional()
-@IsString()
-address?: string;
+balance?: number;
 
 }

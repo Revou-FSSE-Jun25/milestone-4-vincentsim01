@@ -15,20 +15,16 @@ type:string;
 
 
 @IsNumber()
-age?:number;
+@IsNotEmpty()
+interest:number;
 
 
-@IsString()
-nationality?: string;
 
 
 
 @IsNumber()
-phone?: number;
+@IsNotEmpty()
+balance: number;
 
-
-
-@IsString()
-address?: string;
 
 }

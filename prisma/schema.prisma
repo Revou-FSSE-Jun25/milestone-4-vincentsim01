@@ -15,12 +15,15 @@ enum Role {
   USER
 }
 
-model User {
+model Client {
   id           Int           @id @default(autoincrement())
   email        String        @unique
   password     String
   name         String
-  balance      Float         @default(0)
+  phone        Int
+  age          Int
+  address      String
+  nationality  String
   role         Role?
   refreshToken String?
   createdAt    DateTime      @default(now())
@@ -32,15 +35,15 @@ model User {
 
 model Account {
   accountid           Int           @id @default(autoincrement())
-  age          Int
+  interest          Int
+  balance      Float         @default(0)
+  
   type         String
-  phone        Int
-  address      String
-  nationality  String
+
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
-  userId        Int // foreign key
-  user          User     @relation(fields: [userId], references: [id])
+  clientId        Int // foreign key
+  client          Client    @relation(fields: [clientId], references: [id])
 }
 
 model Transaction {
@@ -48,8 +51,8 @@ model Transaction {
   type          String
   amount        Float    @default(0)
   description   String
-  userId        Int // foreign key
-  user          User     @relation(fields: [userId], references: [id])
+  clientId        Int // foreign key
+  client          Client     @relation(fields: [clientId], references: [id])
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }

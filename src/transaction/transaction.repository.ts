@@ -27,39 +27,39 @@ export class TransactionRepository {
   }
 
 
-       async createTransactionDeposit(data: { type: string; amount: number; description: string; userId: number; }) {
+       async createTransactionDeposit(data: { type: string; amount: number; description: string; clientId: number; }) {
      
          return this.prisma.transaction.create({
            data: {
              type: "deposit",
              amount: data.amount,
              description: data.description,
-             userId: data.userId,
+             clientId: data.clientId,
            },
          });
        }
 
-        async createTransactionWithdraw(data: { type: string; amount: number; description: string; userId: number; }) {
+        async createTransactionWithdraw(data: { type: string; amount: number; description: string; clientId: number; }) {
      
          return this.prisma.transaction.create({
            data: {
              type: "withdraw",
              amount: data.amount,
              description: data.description,
-             userId: data.userId,
+             clientId: data.clientId,
            },
          });
        }
 
 
-        async createTransactionTransfer(data: { type: string; amount: number; description: string; userId: number; }) {
+        async createTransactionTransfer(data: { type: string; amount: number; description: string; clientId: number; }) {
      
          return this.prisma.transaction.create({
            data: {
              type: "transfer",
              amount: data.amount,
              description: data.description,
-             userId: data.userId,
+             clientId: data.clientId,
            },
          });
        }

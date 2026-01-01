@@ -34,7 +34,7 @@ export class TransactionController {
             type: string,
             amount: number,
             description: string,
-            userId: number
+            clientId: number
         },
     ){
         return this.TransactionServiceService.createDepositTransactions(body);
@@ -47,7 +47,7 @@ export class TransactionController {
             type: string,
             amount: number,
             description: string,
-            userId: number
+            clientId: number
         },
     ){
         return this.TransactionServiceService.createWithdrawTransactions(body);
@@ -60,7 +60,7 @@ export class TransactionController {
             type: string,
             amount: number,
             description: string,
-            userId: number
+            clientId: number
         },
     ){
         return this.TransactionServiceService.createTransferTransactions(body);

@@ -43,7 +43,11 @@ export class ClientService {
             name: string,
             email: string,
             password: string,
-            balance: number,
+            phone: number,
+            age: number,
+            address: string,
+            nationality: string,
+
             role: 'ADMIN' | 'USER',
 
         }

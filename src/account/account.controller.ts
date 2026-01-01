@@ -52,12 +52,10 @@ export class AccountController {
     @Post()
     createAccount(
         @Body() body:{
-            nationality: string,
             type: string,
-            age: number,
-            phone: number,
-            address: string,
-            userId: number
+            interest: number,
+            balance: number,
+            clientId: number
         },
     ){
         return this.accountService.CreateAccount(body);

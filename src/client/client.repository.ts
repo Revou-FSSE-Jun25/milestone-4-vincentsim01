@@ -9,51 +9,54 @@ import {UpdateRevoBankDto} from './dto/update-revobank.dto';
 export class ClientRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  async createClient(data: { name: string; email: string; password: string; balance?: number; role?: 'ADMIN' | 'USER' }) {
+  async createClient(data: { name: string; email: string; password: string; phone: number; age: number; address: string; nationality: string; role?: 'ADMIN' | 'USER' }) {
     const hashedPassword = await bcrypt.hash(data.password, 10);
 
     // await this.authController.loginUser({email: data.email, password: data.password});
 
-    return this.prisma.user.create({
+    return this.prisma.client.create({
       data: {
         name: data.name,
         email: data.email,
         password: hashedPassword,
-        balance: data.balance,
+        age: data.age,
+        phone: data.phone,
+        address: data.address,
+        nationality: data.nationality,
         role: data.role,
       },
     });
   }
 
   findAll() {
-    return this.prisma.user.findMany({
+    return this.prisma.client.findMany({
     //   include: { todos: true },
     });
   }
 
   findOne(id: number) {
-    return this.prisma.user.findUnique({
+    return this.prisma.client.findUnique({
       where: { id },
     //   include: { todos: true },
     });
   }
 
   update(id: number, data: UpdateRevoBankDto) {
-    return this.prisma.user.update({
+    return this.prisma.client.update({
       where: { id },
       data,
     });
   }
 
   delete(id: number) {
-    return this.prisma.user.delete({
+    return this.prisma.client.delete({
       where: { id },
     });
   }
 
 
   findByEmail(email: string) {
-    return this.prisma.user.findUnique({
+    return this.prisma.client.findUnique({
       where: { email },
     });
   }

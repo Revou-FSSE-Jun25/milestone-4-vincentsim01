@@ -15,13 +15,24 @@ password?: string;
 
 @IsOptional()
 @IsString()
-@IsNotEmpty()
 name?: string;
 
 
-@IsOptional()
 @IsNumber()
-balance?: number;
+@IsOptional()
+phone?: number;
+
+@IsNumber()
+@IsOptional()
+age?: number;
+
+@IsString()
+@IsOptional()
+address?: string;
+
+@IsString()
+@IsOptional()
+nationality?: string;
 
 
 @IsOptional()
@@ -29,7 +40,7 @@ balance?: number;
 role?: 'ADMIN' | 'USER';
 
 
-  @IsString()
-  @IsOptional()
-  refreshToken: string;
+@IsString()
+@IsOptional()
+refreshToken?: string;
 }

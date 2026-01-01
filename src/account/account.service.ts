@@ -27,11 +27,11 @@ export class AccountService {
             // id:number,
             // email?: string,
             // name?: string,
-            nationality?: string,
+    
             type?: string,
-            age?: number,
-            phone?: number,
-            address?: string
+            interest?: number,
+            balance?: number,
+
 
         }){
         return this.accountRepo.update(accountid, data);
@@ -40,12 +40,10 @@ export class AccountService {
 
     CreateAccount(data: {
 
-            nationality: string,
             type: string,
-            age: number,
-            phone: number,
-            address: string,
-            userId: number
+            interest: number,
+            balance: number,
+            clientId: number
 
         }){
         return this.accountRepo.createAccount(data);

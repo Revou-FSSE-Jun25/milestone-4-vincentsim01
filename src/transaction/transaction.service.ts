@@ -25,7 +25,7 @@ export class TransactionService {
             type: string,
             amount: number,
             description: string,
-            userId: number
+            clientId: number
 
         }){
         return this.transactionRepo.createTransactionDeposit(data);
@@ -37,7 +37,7 @@ export class TransactionService {
             type: string,
             amount: number,
             description: string,
-            userId: number
+            clientId: number
 
         }){
         return this.transactionRepo.createTransactionWithdraw(data);
@@ -48,7 +48,7 @@ export class TransactionService {
             type: string,
             amount: number,
             description: string,
-            userId: number
+            clientId: number
 
         }){
         return this.transactionRepo.createTransactionTransfer(data);

@@ -10,19 +10,17 @@ import {UpdateAccountDto} from './dto/update-account.dto';
 export class AccountRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  async createAccount(data: { nationality: string; type: string; age: number; phone: number; address: string; userId: number}) {
+  async createAccount(data: { type: string; interest: number; balance: number; clientId: number}) {
 
 return this.prisma.account.create({
     data: {
-      nationality: data.nationality,
       type: data.type,
-      age: data.age,
-      phone: data.phone,
-      address: data.address,
-      user: { connect: { id: data.userId } }, // link to existing user
+      interest: data.interest,
+      balance: data.balance,
+      client: { connect: { id: data.clientId } }, // link to existing user
     },
     include: {
-      user: true, // include the user data (name & email) in response
+      client: true, // include the user data (name & email) in response
     },
   });
   }
@@ -55,12 +53,12 @@ return this.prisma.account.create({
 findByEmail(email: string) {
   return this.prisma.account.findFirst({
     where: {
-      user: {
-        email: email, // filter by related user's email
+      client: {
+        email: email, // filter by related client's email
       },
     },
     include: {
-      user: true, // include the user data if you want
+      client: true, // include the client data if you want
     },
   });
 }
