@@ -99,3 +99,187 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+🏦 Revobank API
+
+Revobank is a NestJS-based banking backend API that manages client authentication, bank accounts, and financial transactions.
+It uses PostgreSQL as the database with Prisma ORM, and implements JWT authentication with bcrypt password hashing.
+
+🚀 Tech Stack
+
+Framework: NestJS
+
+Database: PostgreSQL
+
+ORM: Prisma
+
+Authentication: JWT (JSON Web Token)
+
+Password Hashing: bcrypt
+
+Language: TypeScript
+
+API Style: RESTful (CRUD)
+
+📦 Core Modules
+1️⃣ Client Module
+
+The Client entity is primarily used for:
+
+Authentication
+
+Storing personal client data
+
+Client fields include:
+
+Email
+
+Password (hashed with bcrypt)
+
+Address
+
+Nationality
+
+Age
+
+Each client can own multiple accounts.
+
+2️⃣ Account Module
+
+The Account entity represents a bank account owned by a client.
+
+Account fields include:
+
+Account type (e.g. savings, current)
+
+Balance
+
+Interest rate
+
+Each account:
+
+Belongs to one client
+
+Can have many transactions
+
+3️⃣ Transaction Module
+
+The Transaction entity represents financial activities made by an account.
+
+Transaction examples:
+
+Deposits
+
+Withdrawals
+
+Transfers
+
+Each transaction:
+
+Belongs to one account
+
+🔗 Database Relationships
+
+Client → Account: One-to-Many
+
+Account → Transaction: One-to-Many
+
+All data is stored in PostgreSQL using Prisma.
+
+🔐 Authentication & Security
+
+JWT is used for authentication and authorization
+
+bcrypt is used to hash and verify passwords
+
+Protected routes require a valid JWT token
+
+Authenticated client data is attached to the request object
+
+🔁 API Features
+
+Revobank follows standard RESTful CRUD operations:
+
+POST – Create resources (register, login, create account, create transaction)
+
+GET – Retrieve data (clients, accounts, transactions)
+
+PATCH – Update resources
+
+DELETE – Remove resources
+
+📂 Project Structure (Simplified)
+src/
+├── auth/
+│   ├── auth.controller.ts
+│   ├── auth.service.ts
+│   ├── jwt.strategy.ts
+│   └── jwt-auth.guard.ts
+│
+├── client/
+│   ├── client.controller.ts
+│   ├── client.service.ts
+│   └── client.module.ts
+│
+├── account/
+│   ├── account.controller.ts
+│   ├── account.service.ts
+│   └── account.module.ts
+│
+├── transaction/
+│   ├── transaction.controller.ts
+│   ├── transaction.service.ts
+│   └── transaction.module.ts
+│
+├── prisma/
+│   ├── prisma.service.ts
+│   └── prisma.module.ts
+│
+└── main.ts
+
+⚙️ Environment Variables
+
+Create a .env file:
+
+DATABASE_URL=postgresql://user:password@host:port/dbname
+JWT_SECRET=your_jwt_secret
+JWT_EXPIRES_IN=1d
+
+🗄 Prisma
+Generate Prisma Client
+pnpm prisma generate
+
+Run Migrations
+pnpm prisma migrate dev
+
+▶️ Running the Project
+pnpm install
+pnpm run start:dev
+
+
+API will be available at:
+
+http://localhost:3000
+
+🧪 API Testing
+
+Use Postman or cURL.
+
+For protected endpoints:
+
+Authorization: Bearer <JWT_TOKEN>
+
+📌 Summary
+
+Secure banking backend using NestJS
+
+PostgreSQL + Prisma for data persistence
+
+JWT & bcrypt for authentication
+
+Clean One-to-Many relationships:
+
+Client → Account → Transaction
+
+Full CRUD support for all resources
