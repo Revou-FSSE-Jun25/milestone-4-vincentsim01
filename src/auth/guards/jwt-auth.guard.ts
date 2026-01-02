@@ -3,9 +3,9 @@ import { AuthGuard } from '@nestjs/passport';
 
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {
-  handleRequest(err, user, info) {
-    console.log('JwtAuthGuard handleRequest: ', { err, user, info });
+  handleRequest(err, client, info) {
+    console.log('JwtAuthGuard handleRequest: ', { err, client, info });
 
-    return user; // must return the user for Nest to attach to req.user
+    return client; // must return the client for Nest to attach to req.client
   }
 }
