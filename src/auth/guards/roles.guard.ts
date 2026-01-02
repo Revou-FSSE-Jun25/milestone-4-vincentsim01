@@ -19,8 +19,8 @@ export class RolesGuard implements CanActivate {
       return true; // no @Roles means open access
     }
 
-    const { client } = context.switchToHttp().getRequest();
-    console.log('User role in guard:', client.role);
-    return requiredRoles.includes(client.role);
+    const { user } = context.switchToHttp().getRequest();
+    console.log('User role in guard:', user.role);
+    return requiredRoles.includes(user.role);
   }
 }

@@ -3,12 +3,13 @@ import { AuthGuard } from '@nestjs/passport';
 
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {
-  handleRequest(err, user, info, context) {
-    if (!user) throw new UnauthorizedException();
+  handleRequest(err, client, info) {
+    console.log('JwtAuthGuard handleRequest: ', { err, client, info });
 
-    const request = context.switchToHttp().getRequest();
-    request.client = user;
+    if (err || !client) {
+      throw err || new UnauthorizedException('Invalid or missing token');
+    }
 
-    return user;
+    return client; // must return the client for Nest to attach to req.client
   }
 }
