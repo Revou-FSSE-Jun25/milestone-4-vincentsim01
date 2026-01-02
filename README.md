@@ -1,8 +1,6 @@
 RAILWAY: https://revobank4-production.up.railway.app
 
-
 POSTMAN: https://cloudy-rocket-335939.postman.co/workspace/Revobank~63961c8c-3492-48fe-bec6-2fccd74e5bf6/collection/27407956-2da9a74f-eeef-4da8-bbd4-19d3491d84bd?action=share&creator=27407956
-
 
 
 <p align="center">
