@@ -20,7 +20,7 @@ export class AccountController {
     getAllAccounts(){
         return this.accountService.getAllAccounts();
     }
-    @UseGuards(JwtAuthGuard, RolesGuard, OwnershipGuard)
+    @UseGuards(JwtAuthGuard, OwnershipGuard, RolesGuard)
     @Roles(Role.ADMIN)
     @Get(':id')
     getAccount(@Param('id') id:string){

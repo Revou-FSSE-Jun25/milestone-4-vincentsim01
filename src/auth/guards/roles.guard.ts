@@ -19,7 +19,18 @@ export class RolesGuard implements CanActivate {
       return true; // no @Roles means open access
     }
 
-    const { user } = context.switchToHttp().getRequest();
+    const req = context.switchToHttp().getRequest();
+
+    // If a previous guard (e.g. OwnershipGuard) marked the request to skip
+    // the roles check, allow the request.
+    if (req && req.skipRolesCheck) {
+      console.log('RolesGuard: skipping roles check due to ownership');
+      return true;
+    }
+
+    const { user } = req;
+    if (!user) return false;
+
     console.log('User role in guard:', user.role);
     return requiredRoles.includes(user.role);
   }

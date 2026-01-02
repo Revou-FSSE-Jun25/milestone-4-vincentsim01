@@ -22,7 +22,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     console.table(payload);
     console.log('JWT payload:', payload);
     return {
-      clientId: payload.sub,
+      id: payload.sub,
       email: payload.email,
       role: payload.role,
     };

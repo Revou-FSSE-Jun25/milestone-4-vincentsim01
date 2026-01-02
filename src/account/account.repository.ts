@@ -32,7 +32,7 @@ return this.prisma.account.create({
 
   findOne(accountid: number) {
     return this.prisma.account.findUnique({
-      where: { accountid },
+      where: { accountid:accountid },
     });
   }
 

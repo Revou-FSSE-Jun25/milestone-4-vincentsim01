@@ -13,20 +13,27 @@ import { UpdateTransactionDto } from './dto/update-transaction.dto';
 export class TransactionController {
     constructor(private readonly TransactionServiceService:TransactionService){}
     
+    @UseGuards(RolesGuard, OwnershipGuard)
+    @Roles(Role.ADMIN)
     @Get()
     getAllTransactions(){
         return this.TransactionServiceService.getAllTransactions();
     }
+
+
 
     @Get(':id')
     getOneTransactions(@Param('id') id:string){
         return this.TransactionServiceService.getOneTransactions(Number(id));
     }
 
+    @UseGuards(RolesGuard)
+    @Roles(Role.ADMIN)
     @Delete(':id')
     DeleteOneTransactions(@Param('id') id:string){
         return this.TransactionServiceService.DeleteOneTransactions(Number(id));
     }
+
 
     @Patch(':id')
     UpdateTransaction(
